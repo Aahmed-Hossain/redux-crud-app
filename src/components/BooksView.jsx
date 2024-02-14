@@ -1,7 +1,13 @@
-import { useSelector, } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import { deleteBook } from './BooksSlice';
+import { Link } from 'react-router-dom';
 
 const BooksView = () => {
 const books = useSelector((state)=>state.booksReducer.books);
+const dispatch = useDispatch();
+const handleDelete = (id) => {
+    dispatch(deleteBook(id))
+}
 
   return (
     <div >
@@ -23,8 +29,13 @@ const books = useSelector((state)=>state.booksReducer.books);
                         <td className='border border-yellow-500 w-[11rem] h-[3rem] text-center font-semibold'>{idx + 1 }</td>
                         <td className='border border-yellow-500 w-[11rem] h-[3rem] text-center font-semibold'>{title}</td>
                         <td className='border border-yellow-500 w-[11rem] h-[3rem] text-center font-semibold'>{author}</td>
-                        <td className='border border-yellow-500 w-[11rem] h-[3rem] text-center font-semibold'><button className='bg-yellow-200 rounded px-2 mr-3' >Edit</button>
-                        <button className='bg-yellow-200 rounded px-2 mr-3'>Delete</button></td>
+                        <td className='border border-yellow-500 w-[11rem] h-[3rem] text-center font-semibold'><button
+                        onClick={()=>handleDelete(id)} 
+                        className='bg-yellow-200 rounded px-2 mr-3' >Delete</button>
+                        <Link to={'/edit-book'} state={{id, title, author}}>
+                        <button className='bg-yellow-200 rounded px-2 mr-3'>Edit</button>
+                        </Link>
+                        </td>
                     </tr>
                 })
             }

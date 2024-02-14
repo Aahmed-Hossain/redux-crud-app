@@ -1,16 +1,16 @@
 import { useState } from "react"
-import { useSelector,  useDispatch} from 'react-redux';
+import {  useDispatch} from 'react-redux';
 import { addBook } from "../components/BooksSlice";
 import { useNavigate } from 'react-router-dom'
 const AddBooks = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const numberOfBooks = useSelector((state)=>state.booksReducer.books.length);
+  // const numberOfBooks = useSelector((state)=>state.booksReducer.books.length);
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
 const handleSubmit = (e)=> {
   e.preventDefault();
-  const book = {id:numberOfBooks+1, title, author};
+  const book = { title, author};
   dispatch(addBook(book));
   navigate('/')
 }
@@ -21,6 +21,7 @@ const handleSubmit = (e)=> {
     <div className="mb-4 flex flex-col">
       <label htmlFor="title" className="text-yellow-600">Title:</label>
       <input
+      required
         type="text"
         name="title"
         id="title"
@@ -32,6 +33,7 @@ const handleSubmit = (e)=> {
     <div className="mb-4 flex flex-col">
       <label htmlFor="author" className="text-yellow-600">Author:</label>
       <input
+      required
         type="text"
         name="author"
         id="author"

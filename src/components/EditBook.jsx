@@ -34,6 +34,7 @@ const EditBook = () => {
             name="title"
             id="title"
             className="border border-yellow-600 px-2 py-1 rounded"
+            required
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
@@ -43,6 +44,7 @@ const EditBook = () => {
             Author:
           </label>
           <input
+          required
             type="text"
             name="author"
             id="author"

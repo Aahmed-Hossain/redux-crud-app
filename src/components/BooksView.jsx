@@ -33,7 +33,7 @@ const handleDelete = (id) => {
                         onClick={()=>handleDelete(id)} 
                         className='bg-yellow-200 rounded px-2 mr-3' >Delete</button>
                         <Link to={'/edit-book'} state={{id, title, author}}>
-                        <button className='bg-yellow-200 rounded px-2 mr-3'>Edit</button>
+                        <button className='bg-yellow-200 rounded px-2 mr-3'>Update</button>
                         </Link>
                         </td>
                     </tr>
